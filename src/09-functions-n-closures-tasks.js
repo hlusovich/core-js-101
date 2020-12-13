@@ -112,14 +112,17 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func) {
+  const err = [];
+  const flag = true;
   return () => {
-    while (true) {
+    while (flag) {
       try {
         return func();
       } catch (e) {
-        console.log(e);
+        err.push(e);
       }
     }
+    return true;
   };
 }
 
@@ -178,7 +181,7 @@ function logger() {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args) {
-  return function (...rest) {
+  return (...rest) => {
     const array = args.concat(rest);
     return fn(...array);
   };

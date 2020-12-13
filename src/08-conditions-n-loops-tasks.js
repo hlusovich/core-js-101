@@ -442,15 +442,16 @@ function getCommonDirectoryPath(patches) {
   let similar = '/';
   let index = 0;
   let result = '';
+  let flag = true;
 
-  while (true) {
+  while (flag) {
     const domen = similar;
     if (patches.every((item) => item.startsWith(domen))) {
       result = similar;
       index += 1;
       similar = `${similar + patches[0].split('/')[index]}/`;
     } else {
-      break;
+      flag = false;
     }
   }
   return result;

@@ -103,11 +103,12 @@ function getFastestPromise(array) {
 async function chainPromises(array, action) {
   async function foo() {
     const arrrr = [];
+    const error = [];
 
     for (let i = 0; i < array.length; i += 1) {
       array[i].then((j) => {
         arrrr.push(j);
-      }).catch((e) => console.log(e.message));
+      }).catch((e) => error.push(e));
     }
     return arrrr;
   }
