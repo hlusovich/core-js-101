@@ -149,21 +149,18 @@ function retry(func) {
  * cos(3.141592653589793) ends
  *
  */
-function logger() {
-  throw new Error('Not implemented');
-  // return function (...rest) {
-  //   let callString = JSON.stringify(rest);
-  //   callString = callString.slice(1, callString.length - 1);
-  //   callString = `${func.name}(${callString})`;
-  //   const result = () => {
-  //     const start = `${callString} starts`;
-  //     logFunc(start);
-  //     func(rest);
-  //     const end = `${callString} ends`;
-  //     logFunc(end);
-  //   };
-  //   result();
-  // };
+function logger(func, logFunc) {
+  return (...rest) => {
+    let callString = JSON.stringify(rest);
+    callString = callString.slice(1, callString.length - 1);
+    callString = `${func.name}(${callString})`;
+    const start = `${callString} starts`;
+    logFunc(start);
+    const result = func(...rest);
+    const end = `${callString} ends`;
+    logFunc(end);
+    return result;
+  };
 }
 
 
