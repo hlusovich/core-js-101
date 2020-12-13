@@ -116,6 +116,45 @@ describe('09-functions-n-closures-tasks', () => {
     let log = '';
 
     const fn = function testLogger(param, index) {
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param+"****");
+      console.warn(param+"****");
+      console.warn(param+"****");
+      console.warn(param+"****");
+      console.warn(param+"****");
+
+
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);
+      console.warn(param);d
       assert.equal(
         log,
         'testLogger(["expected","test",1],0) starts\n',

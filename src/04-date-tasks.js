@@ -1,41 +1,10 @@
-/* *******************************************************************************************
- *                                                                                           *
- * Plese read the following tutorial before implementing tasks:                              *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates#Date_object
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date     *
- *                                                                                           *
- ******************************************************************************************* */
-
-
-/**
- * Parses a rfc2822 string date representation into date value
- * For rfc2822 date specification refer to : http://tools.ietf.org/html/rfc2822#page-14
- *
- * @param {string} value
- * @return {date}
- *
- * @example:
- *    'December 17, 1995 03:24:00'    => Date()
- *    'Tue, 26 Jan 2016 13:48:02 GMT' => Date()
- *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
- */
-function parseDataFromRfc2822(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromRfc2822(value) {
+  return new Date(Date.parse(value));
 }
 
-/**
- * Parses an ISO 8601 string date representation into date value
- * For ISO 8601 date specification refer to : https://en.wikipedia.org/wiki/ISO_8601
- *
- * @param {string} value
- * @return {date}
- *
- * @example :
- *    '2016-01-19T16:07:37+00:00'    => Date()
- *    '2016-01-19T08:07:37Z' => Date()
- */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+
+function parseDataFromIso8601(value) {
+  return new Date(Date.parse(value));
 }
 
 
@@ -53,8 +22,19 @@ function parseDataFromIso8601(/* value */) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  function IsLeapYear(year) {
+    if (year % 4 === 0) {
+      if (year % 100 === 0) {
+        if (year % 400 === 0) {
+          return true;
+        } return false;
+      } return true;
+    }
+    return false;
+  }
+
+  return IsLeapYear(date.getFullYear());
 }
 
 
@@ -73,8 +53,8 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  return new Date(endDate - startDate).toISOString().slice(11, 23);
 }
 
 
@@ -94,8 +74,13 @@ function timeSpanToString(/* startDate, endDate */) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(/* date */) {
-  throw new Error('Not implemented');
+function angleBetweenClockHands(date) {
+  const hours = date.getUTCHours() % 12;
+  const minutes = date.getUTCMinutes();
+  let angle = Math.abs(0.5 * (60 * hours - 11 * minutes));
+  if (angle > 180) angle = Math.abs(360 - angle);
+  angle = (angle * Math.PI) / 180;
+  return angle;
 }
 
 
